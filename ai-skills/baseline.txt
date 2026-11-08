@@ -1,6 +1,6 @@
 # Skills every DrivnX repo gets, on top of AI Skill OS's always-on core
 # (requirements, planning, tdd, testing, security, code-review, verification, ...).
-# One skill per line. Change this list, then run `new-repo.sh --sync` to apply it to every repo.
+# One skill per line. Change this list, then run `drivnx-skills.sh sync` to apply it to every repo.
 
 work-branch                # clean branch per piece of work, small commits
 finish-branch              # verify, update from base, merge or open a PR

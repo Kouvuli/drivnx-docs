@@ -4,6 +4,8 @@ DrivnX is the product and the company; Trison Labs is the team building it. Phas
 
 **Source of truth:** [docs/DrivnX_Phase1_Development_Direction.md](docs/DrivnX_Phase1_Development_Direction.md), approved and canonical since 2026-10-30.
 
+**New here?** Read [CONTRIBUTING.md](CONTRIBUTING.md) to set up the workspace, then each code repo's own `CONTRIBUTING.md` for its workflow and AI skills.
+
 | Folder | What |
 |---|---|
 | `docs/` | Phase 1 direction (Markdown + PDF, figures; `build_pdf.py` re-renders the PDF), review notes, `design-mocks/` (the shipped orange palette), `archive/` (reviewed PDF, Velora Product Vision v2, its source image notes) |
