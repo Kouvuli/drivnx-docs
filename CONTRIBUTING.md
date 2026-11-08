@@ -40,7 +40,20 @@ chromium --headless --no-pdf-header-footer --print-to-pdf=DrivnX_Phase1_Developm
 
 Commit the Markdown and the PDF together. Pushes and pull requests go to `trisonlab/drivnx-docs`.
 
-## 3. Using the AI skills
+## 3. Plane
+
+Work is tracked in [Plane](https://app.plane.so/drivnx/), project DRIVN: one module per Phase 1 milestone (M1 to M9)
+plus Website, and one work item per feature, ticket and launch step. Labels say which repo owns the item
+(`drivnx-web`, `drivnx-landing`). A drivnx-web ticket's ID is its Plane key (`DRIVN-31`); features and criteria keep
+their CFX IDs. The repos stay the source of truth and Plane mirrors them; each repo's CONTRIBUTING.md says how.
+
+To let Claude Code update Plane, add Plane's MCP server once (it signs in with OAuth in the browser):
+
+```bash
+claude mcp add --transport http --scope user plane https://mcp.plane.so/http/mcp
+```
+
+## 4. Using the AI skills
 
 Skills are installed per code repo, not in this one. **Start your AI session inside the repo you're changing**
 (`cd drivnx-web` or `cd drivnx-landing`, then `claude` or `codex`). Only then does the tool load that repo's
@@ -48,7 +61,7 @@ Skills are installed per code repo, not in this one. **Start your AI session ins
 
 How to use the skills day to day (`/next-step` to start, the flow, the guard hooks) is in each code repo's guide.
 
-## 4. Managing the skill setup
+## 5. Managing the skill setup
 
 `ai-skills/` holds the setup that all the code repos share:
 
