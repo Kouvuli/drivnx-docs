@@ -1,6 +1,3 @@
-# The two code repos have their own git history
-drivnx-web/
-drivnx-landing/
-# Local only: autopilot run logs and Claude Code settings
-autopilot/
+# Local only: Claude Code settings and Python caches
 .claude/
+__pycache__/

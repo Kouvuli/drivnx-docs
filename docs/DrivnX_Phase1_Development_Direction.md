@@ -233,7 +233,7 @@ PostgreSQL gives the best implementation fit: DuckDB can attach it directly in r
 
 Every metric carries **scope, method, precision, sample size, timestamp and profile-run ID**, so sampled and exact results are never visually mixed. Declared relationships and candidate (inferred) relationships are stored separately.
 
-*Note (2026-11-05): by the user's decision, a CSV's fast profile reads the first 100,000 rows, labelled "first rows, not random", because a random sample of a CSV still reads the whole file. Min, max, frequent values, distributions, mean, median and standard deviation are computed on request and not saved as observations, and masked patterns always come from the first 100,000 rows. Candidate relationships move to the M5 work, and correcting column types moves to the rest of M2. See `.ai/knowledge/requirements/CFX-APP-csv-profile.md` and [ADR 0004](../drivnx-web/docs/adr/0004-profile-values-and-caching.md) in drivnx-web.*
+*Note (2026-11-05): by the user's decision, a CSV's fast profile reads the first 100,000 rows, labelled "first rows, not random", because a random sample of a CSV still reads the whole file. Min, max, frequent values, distributions, mean, median and standard deviation are computed on request and not saved as observations, and masked patterns always come from the first 100,000 rows. Candidate relationships move to the M5 work, and correcting column types moves to the rest of M2. See `.ai/knowledge/requirements/CFX-APP-csv-profile.md` and [ADR 0004](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0004-profile-values-and-caching.md) in drivnx-web.*
 
 ### From statistics to understanding
 
@@ -314,7 +314,7 @@ Phase 1 needs **credible foundations, not enterprise security infrastructure**. 
 | Huge or malformed input exhausts resources | Sampling, size warnings, limits, cancellation |
 | AI produces incorrect documentation | Inferred state + human review |
 
-*Note (2026-11-05): "raw data not copied by default" now has a rule for profiling. A profile saves only counts, percentages, text lengths and masked patterns, and values from the file are computed on request and never saved. Two things stay open: a row used as column names that the user never corrects, and dictionary examples and contract accepted values, which are due with those slices. See [ADR 0004](../drivnx-web/docs/adr/0004-profile-values-and-caching.md) in drivnx-web.*
+*Note (2026-11-05): "raw data not copied by default" now has a rule for profiling. A profile saves only counts, percentages, text lengths and masked patterns, and values from the file are computed on request and never saved. Two things stay open: a row used as column names that the user never corrects, and dictionary examples and contract accepted values, which are due with those slices. See [ADR 0004](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0004-profile-values-and-caching.md) in drivnx-web.*
 
 ### What we can and cannot claim
 
@@ -507,13 +507,13 @@ Use **synthetic datasets only** (e.g. clean retail data, duplicated IDs, mixed d
 
 | Decision | Options |
 |---|---|
-| Workspace packaging | **Decided:** CLI launcher, one workspace per runtime ([ADR 0001](../drivnx-web/docs/adr/0001-workspace-packaging-and-session-token.md)) |
+| Workspace packaging | **Decided:** CLI launcher, one workspace per runtime ([ADR 0001](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0001-workspace-packaging-and-session-token.md)) |
 | PostgreSQL sampling | Random / deterministic / bounded query |
 | Relationship inference | Heuristic / statistical / AI-assisted |
 | External AI provider and local model | To be selected before M8 (spike 4 needs it) |
-| Contract internal schema | **Decided:** DrivnX-native with ODCS export ([ADR 0003](../drivnx-web/docs/adr/0003-contract-schema-native-with-odcs-export.md)) |
-| Workspace storage | **Decided:** SQLite only ([ADR 0002](../drivnx-web/docs/adr/0002-workspace-storage-sqlite-only.md)) |
-| Profile caching | **Decided:** no cache. Each run saves its own observations, and values are computed on request ([ADR 0004](../drivnx-web/docs/adr/0004-profile-values-and-caching.md)) |
+| Contract internal schema | **Decided:** DrivnX-native with ODCS export ([ADR 0003](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0003-contract-schema-native-with-odcs-export.md)) |
+| Workspace storage | **Decided:** SQLite only ([ADR 0002](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0002-workspace-storage-sqlite-only.md)) |
+| Profile caching | **Decided:** no cache. Each run saves its own observations, and values are computed on request ([ADR 0004](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0004-profile-values-and-caching.md)) |
 | AI suggestion wording | "Suggestion" vs "Proposal" in the UI |
 | AI consent granularity | Workspace-level vs per-request approval |
 
@@ -656,9 +656,9 @@ Every `/api/*` endpoint except `/api/session` requires the session token, becaus
 
 | Decision | Options — and why it blocks the first slice |
 |---|---|
-| Workspace packaging | **Closed:** CLI launcher ([ADR 0001](../drivnx-web/docs/adr/0001-workspace-packaging-and-session-token.md)) — defines how the runtime starts, opens the browser and hands it the session token |
-| Workspace storage | **Closed:** SQLite only ([ADR 0002](../drivnx-web/docs/adr/0002-workspace-storage-sqlite-only.md)) — shapes M1 persistence |
-| Contract internal schema | **Closed:** DrivnX-native with ODCS export ([ADR 0003](../drivnx-web/docs/adr/0003-contract-schema-native-with-odcs-export.md)) — shapes the Contract and ContractRule entities |
+| Workspace packaging | **Closed:** CLI launcher ([ADR 0001](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0001-workspace-packaging-and-session-token.md)) — defines how the runtime starts, opens the browser and hands it the session token |
+| Workspace storage | **Closed:** SQLite only ([ADR 0002](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0002-workspace-storage-sqlite-only.md)) — shapes M1 persistence |
+| Contract internal schema | **Closed:** DrivnX-native with ODCS export ([ADR 0003](https://github.com/trisonlab/drivnx-web/blob/main/docs/adr/0003-contract-schema-native-with-odcs-export.md)) — shapes the Contract and ContractRule entities |
 
 ---
 

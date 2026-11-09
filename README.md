@@ -6,20 +6,29 @@ DrivnX is the product and the company; Trison Labs is the team building it. Phas
 
 **New here?** Read [CONTRIBUTING.md](CONTRIBUTING.md) to set up the workspace, then each code repo's own `CONTRIBUTING.md` for its workflow and AI skills.
 
+This repo sits in a `DrivnX/` workspace folder next to the two code repos:
+
+| Repo | What |
+|---|---|
+| `drivnx-docs` (this one) | Product docs, shared AI skill setup and team tools |
+| [`drivnx-web`](https://github.com/trisonlab/drivnx-web) | The Phase 1 app (local FastAPI runtime + React browser UI) |
+| [`drivnx-landing`](https://github.com/trisonlab/drivnx-landing) | Public website. Copy follows the Phase 1 direction since requirements revision 12 |
+
 | Folder | What |
 |---|---|
 | `docs/` | Phase 1 direction (Markdown + PDF, figures; `build_pdf.py` re-renders the PDF), review notes, `design-mocks/` (the shipped orange palette), `archive/` (reviewed PDF, Velora Product Vision v2, its source image notes) |
-| `drivnx-web/` | The Phase 1 app repo (local FastAPI runtime + React browser UI); git: `trisonlab/drivnx-web` |
-| `drivnx-landing/` | Public website; git: `trisonlab/drivnx-landing`. Copy follows the Phase 1 direction since requirements revision 12 |
 | `ai-skills/` | AI Skill OS setup shared by every repo |
+| `bin/drivnx` | The `drivnx` command: sets up the workspace and checks it (`drivnx install`, `status`, `update`) |
+| `team-tools/` | The Pumble notifier behind the automatic team posts (see CONTRIBUTING.md) |
 
 ## AI skills for every repo
 
 Every repo gets AI Skill OS's always-on core, plus the shared [ai-skills/baseline.txt](ai-skills/baseline.txt), plus its own stack skills:
 
 ```bash
-ai-skills/drivnx-skills.sh init drivnx-<name> <stack skills...>   # new repo
-ai-skills/drivnx-skills.sh sync                                     # after editing baseline.txt
+# from the DrivnX/ workspace folder
+drivnx-docs/ai-skills/drivnx-skills.sh init drivnx-<name> <stack skills...>   # new repo
+drivnx-docs/ai-skills/drivnx-skills.sh sync                                     # after editing baseline.txt
 ```
 
 | Repo | Stack skills on top of the baseline |
