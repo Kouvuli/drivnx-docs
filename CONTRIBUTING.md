@@ -1,24 +1,26 @@
 # Working in the DrivnX workspace
 
-This repo (`trisonlab/drivnx-docs`) is the workspace that holds the product docs and the AI skill setup. The two code
-repos are cloned inside it and each has its own guide:
+This repo (`trisonlab/drivnx-docs`) holds the product docs and the AI skill setup. It sits in a `DrivnX/` workspace
+folder next to the other repos, and each code repo has its own guide:
 
-- [drivnx-web/CONTRIBUTING.md](drivnx-web/CONTRIBUTING.md): the Phase 1 app
-- [drivnx-landing/CONTRIBUTING.md](drivnx-landing/CONTRIBUTING.md): the public website
+- [drivnx-web/CONTRIBUTING.md](../drivnx-web/CONTRIBUTING.md): the Phase 1 app
+- [drivnx-landing/CONTRIBUTING.md](../drivnx-landing/CONTRIBUTING.md): the public website
 
 ## 1. Set up
 
-```bash
-git clone git@github.com:trisonlab/drivnx-docs.git DrivnX
-cd DrivnX
-git clone git@github.com:trisonlab/drivnx-web.git
-git clone git@github.com:trisonlab/drivnx-landing.git
+Set up with [drivnx-cli](https://github.com/trisonlab/drivnx-cli): one command creates the workspace, clones the
+repos, installs their dependencies and connects Claude Code to Plane and Pumble. Its README is the team guide.
+
+```
+DrivnX/                 a plain folder, not a repo
+├── drivnx-cli/         trisonlab/drivnx-cli: the drivnx command and the team guide
+├── drivnx-docs/        trisonlab/drivnx-docs (this repo): docs/ and ai-skills/
+├── drivnx-web/         trisonlab/drivnx-web
+└── drivnx-landing/     trisonlab/drivnx-landing
 ```
 
-Keep this layout: the code repos link to `../docs/` and `../ai-skills/`. `.gitignore` keeps them out of this repo, so
-each one has its own history, branches and pushes. Run git inside the folder you changed.
-
-Also ignored, and local only: `autopilot/` (run logs) and `.claude/` (your Claude Code settings).
+Keep the repos side by side: the code repos link to `../drivnx-docs/docs/` and `../drivnx-docs/ai-skills/`.
+Each repo has its own history, branches and pushes, so run git inside the folder you changed.
 
 ## 2. The docs
 
@@ -53,15 +55,20 @@ To let Claude Code update Plane, add Plane's MCP server once (it signs in with O
 claude mcp add --transport http --scope user plane https://mcp.plane.so/http/mcp
 ```
 
-## 4. Using the AI skills
+## 4. How the team works
+
+Sprints, the Thursday and Saturday meetings, the Pumble channels, the automatic daily report and the rules for keys
+are in the [drivnx-cli README](https://github.com/trisonlab/drivnx-cli#how-we-work).
+
+## 5. Using the AI skills
 
 Skills are installed per code repo, not in this one. **Start your AI session inside the repo you're changing**
-(`cd drivnx-web` or `cd drivnx-landing`, then `claude` or `codex`). Only then does the tool load that repo's
-`CLAUDE.md` / `AGENTS.md`, skills and guard hooks. A session started here at the workspace root gets none of them.
+(`cd DrivnX/drivnx-web` or `cd DrivnX/drivnx-landing`, then `claude` or `codex`). Only then does the tool load that
+repo's `CLAUDE.md` / `AGENTS.md`, skills and guard hooks. A session started in `DrivnX/` or here gets none of them.
 
 How to use the skills day to day (`/next-step` to start, the flow, the guard hooks) is in each code repo's guide.
 
-## 5. Managing the skill setup
+## 6. Managing the skill setup
 
 `ai-skills/` holds the setup that all the code repos share:
 
@@ -70,9 +77,11 @@ How to use the skills day to day (`/next-step` to start, the flow, the guard hoo
 | `ai-skills/baseline.txt` | Skills every repo gets on top of AI Skill OS's always-on core, one per line |
 | `ai-skills/drivnx-skills.sh` | Sets up a new repo, or applies `baseline.txt` to every repo |
 
+Run them from the `DrivnX/` folder:
+
 ```bash
-ai-skills/drivnx-skills.sh init drivnx-<name> <stack skills...>   # set up a new repo
-ai-skills/drivnx-skills.sh sync                                     # after editing baseline.txt
+drivnx-docs/ai-skills/drivnx-skills.sh init drivnx-<name> <stack skills...>   # set up a new repo
+drivnx-docs/ai-skills/drivnx-skills.sh sync                                     # after editing baseline.txt
 ```
 
 Both need the `ai-skills` CLI from AI Skill OS, which isn't published yet: **ask Trison Labs if you need it.** Using
