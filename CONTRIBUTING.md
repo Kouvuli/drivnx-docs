@@ -49,11 +49,8 @@ plus Website, and one work item per feature, ticket and launch step. Labels say 
 (`drivnx-web`, `drivnx-landing`). A drivnx-web ticket's ID is its Plane key (`DRIVN-31`); features and criteria keep
 their CFX IDs. The repos stay the source of truth and Plane mirrors them; each repo's CONTRIBUTING.md says how.
 
-To let Claude Code update Plane, add Plane's MCP server once (it signs in with OAuth in the browser):
-
-```bash
-claude mcp add --transport http --scope user plane https://mcp.plane.so/http/mcp
-```
+`drivnx install` connects Claude Code to Plane. Sign in once: in Claude Code type `/mcp`, pick *plane*, then
+*Authenticate*.
 
 ## 4. How the team works
 
